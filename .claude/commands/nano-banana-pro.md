@@ -147,6 +147,24 @@ The model has a realism bias from RLHF training. Its "thinking" process tries to
 - Simply describe the change: "Change the background to a beach sunset"
 - Global or local restyles supported
 
+### 5 Core Editing Action Words:
+1. **Replace** — swap one element for another
+2. **Remove** — delete an element
+3. **Change** — modify properties of an element
+4. **Add** — insert a new element
+5. **Adjust** — tune existing properties (lighting, color, etc.)
+
+### Keep/Change Framework:
+- **Keep**: what must NOT change (facial features, pose, outfit)
+- **Change**: what to modify
+- **How**: style, strength, direction
+- **Constraints**: avoid side effects
+
+Example: "Keep the person's facial features, hairstyle, pose, and outfit unchanged. Replace the background with a seaside boardwalk at dusk, warm sunset tones with slight backlight."
+
+### Step-Back Prompting:
+Ask the model to plan before generating: "Explain how you would approach designing a data dashboard for Q4 sales, then create it."
+
 ---
 
 ## ASPECT RATIOS & RESOLUTION
@@ -261,11 +279,52 @@ After presenting, ask if they want to adjust anything.
 
 ---
 
+## API DETAILS
+
+### Model IDs:
+- **Nano Banana Pro**: `gemini-3-pro-image-preview` (professional, reasoning-driven)
+- **Nano Banana 2**: `gemini-3.1-flash-image-preview` (high-efficiency, speed)
+
+### Key API Config:
+- `response_modalities`: `["IMAGE"]`, `["TEXT"]`, or `["TEXT", "IMAGE"]`
+- `imageConfig.aspectRatio`: `"16:9"`, `"1:1"`, `"9:16"`, etc.
+- `imageConfig.imageSize`: `"4K"`
+- `tools`: `{"googleSearch": {}}` for real-world grounding
+
+### Python SDK:
+```python
+from google import genai
+client = genai.Client()
+response = client.models.generate_content(
+    model="gemini-3-pro-image-preview",
+    contents=["Your prompt here"],
+    config={"response_modalities": ["IMAGE"]}
+)
+```
+
+---
+
+## NEGATIVE PROMPTS (Optional Baseline)
+
+For cleaner results, add negative prompts:
+```
+"low quality, blurry, grain, watermark, bad anatomy, extra fingers, deformed hands, cluttered background"
+```
+
+For photorealism add:
+```
+"no distortion, no extra limbs, no asymmetry, no artifacts, no overexposure, no cartoon effect"
+```
+
+---
+
 ## IMPORTANT NOTES
 - Always output the prompt in English (Nano Banana Pro works best in English)
 - Format the final prompt clearly so it can be copied directly
 - If the user provides a vague request, ask 2-3 focused questions before generating
 - For text-heavy images, remind the user about the double-quote technique
 - For character consistency, suggest the reference sheet approach
+- When user attaches reference images, use the Reference-Based Formula
+- The user uses Higgsfield API — format prompts accordingly
 
 $ARGUMENTS
