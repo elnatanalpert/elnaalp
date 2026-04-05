@@ -89,6 +89,11 @@ Understanding these helps you write better prompts — lists in your prompt acti
 - **Keep text short** — Text rendering is most accurate with short phrases
 - **Use bold serif fonts** — They have highest accuracy for text rendering
 - **Prototype at medium res** — Then finalize at 4K for production
+- **Be specific about materials** — Not "suit jacket" but "navy blue tweed suit jacket"
+- **Place camera angle at the start** — Lens and angle at the very beginning of the prompt
+- **Use structured input** — Lists, tables, hierarchies, metrics (not narrative paragraphs)
+- **Add "text is clear and readable, tidy typography"** — Reinforces text rendering quality
+- **Iterate in small steps** — Change 1-2 dimensions per pass for clean comparisons
 
 ### DON'T:
 - **No "tag soup"** — Never write: `dog, park, 4k, realistic, masterpiece, best quality`
@@ -232,6 +237,27 @@ Minimalist logo for [brand name] "[TEXT]". Style: [aesthetic]. Colors: [palette]
 ### YouTube Thumbnails:
 ```
 YouTube thumbnail showing [subject] with [expression/pose]. Bold text "[TITLE]" in [color]. Background: [style]. High contrast, eye-catching, 16:9.
+```
+
+### UI/Web Design:
+```
+Design a clean, modern [page type] for a [industry] website with [layout], [hero section], brand logo, navigation bar, [typography], [cards/components], and [CTA button].
+```
+
+### Brand Identity Kit:
+```
+Create a complete brand identity kit for "[Brand Name]" including logo variations, color palette, typography system, icon set, pattern language, and layout rules with [style] aesthetic.
+```
+
+### Photo Editing (Conversational):
+```
+Edit this photo by [change], keep [what stays the same], match [style or reference], for [channel or format].
+Example: "Edit this photo by changing the background to a cozy coffee shop, keep the person and their outfit the same, match warm lifestyle photography style, for a LinkedIn profile image"
+```
+
+### Natural/UGC Style:
+```
+A natural UGC-style photo showing a real person casually holding or using [product] in a bright, everyday setting with natural expression and soft lighting.
 ```
 
 ---
