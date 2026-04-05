@@ -43,6 +43,37 @@ Subject + Action/Context + Environment + Lighting & Style + Technical Constraint
 ```
 Example: "Using the attached napkin sketch as the structure and the attached fabric sample as the texture, transform this into a high-fidelity 3D armchair render. Place it in a sun-drenched, minimalist living room."
 
+### 5. JSON Prompting (Advanced)
+For maximum precision, structure prompts as JSON key-value pairs:
+```json
+{
+  "task": "generate_image",
+  "subject": { "type": "person", "description": "..." },
+  "style": {
+    "lighting": { "type": "dramatic", "color_temperature": "3200K", "direction": "top-down" }
+  },
+  "camera": { "lens": "35mm", "aperture": "f/2.0" },
+  "output_format": "image/png"
+}
+```
+Nano Banana skips natural language parsing and directly matches each value to its internal settings — faster, less error, more consistency.
+
+---
+
+## THE 7 INTERNAL ENGINES
+
+Understanding these helps you write better prompts — lists in your prompt activate these engines:
+
+1. **Layout Engine** — Grids, columns, visual hierarchies (makes infographics readable)
+2. **Diagram Engine** — Nodes, connections, labels, spacing from structured text
+3. **Typography Engine** — Text as design element, sharp rendering, respected hierarchies
+4. **Data Visualization Engine** — Numbers into charts, KPIs, indicators (Tableau-level)
+5. **Style Universe Engine** — Artistic style application
+6. **Brand & Identity Engine** — Brand consistency maintenance
+7. **Representation Transformer Engine** — Dimensional and style transformations (2D↔3D)
+
+**Key insight**: Listed elements in prompts become logical anchors that activate these engines, ensure completeness, prevent omissions, and stabilize structure.
+
 ---
 
 ## GOLDEN RULES
@@ -65,6 +96,14 @@ Example: "Using the attached napkin sketch as the structure and the attached fab
 - **No negative prompts** — Don't say "no cars", say "empty street"
 - **No re-rolling from scratch** — Edit existing results when they're close
 - **No handwritten/script fonts for text** — They have lowest accuracy
+- **No contradictions** — Don't mix "minimal white background" with "dense complex details"
+- **No trait switching** — If you said "emerald eyes" in panel 1, don't switch to "green eyes" in panel 2 (trait locking)
+- **No left/right ambiguity** — Be specific about perspective when describing positions
+
+---
+
+## THE REALISM BIAS (Important Caveat)
+The model has a realism bias from RLHF training. Its "thinking" process tries to push outputs toward realistic/median behavior. This can cause problems with surreal or highly stylized prompts. Counteract by being **extremely explicit** about desired artistic style. The thinking step cannot be disabled.
 
 ---
 
@@ -91,10 +130,12 @@ Example: "Using the attached napkin sketch as the structure and the attached fab
 3. Upload as reference images (practical max: 6 high-quality references)
 4. The model supports up to 14 reference images simultaneously
 
-### Maintaining Consistency:
-- Describe the character in detail each time
+### Maintaining Consistency (Trait Locking):
+- Describe the character in detail each time using **identical terms**
 - Reference the character sheet
 - Keep clothing, hair, and distinctive features consistent in descriptions
+- If you say "emerald eyes" — always say "emerald eyes", never switch to "green eyes"
+- Achieves ~93% character consistency across scenes
 
 ---
 
@@ -116,6 +157,28 @@ Example: "Using the attached napkin sketch as the structure and the attached fab
 - **4:3** — Standard photography
 - **3:2** — Classic photo ratio
 - Prototype at medium resolution, finalize at 4K
+
+---
+
+## LAYOUT TEMPLATES
+
+### Bento Grid (modular topic overviews):
+```
+Asymmetric bento grid, 16:9 landscape. Hero card at 28-30%, info modules at 70-72%.
+8 cards containing: [component list]. Clean rectangular compartments.
+```
+
+### S-Curve / Zigzag (step-by-step guides):
+```
+Process layout using S-curve pattern guiding the eye through [N] steps.
+Each step represented by [illustration type] interacting with [objects].
+```
+
+### Three-Level Text Hierarchy (professional layouts):
+```
+Headline: [large bold text]. Subheader: [medium descriptive text].
+Body copy: [small detail text]. Generous white space between sections.
+```
 
 ---
 
